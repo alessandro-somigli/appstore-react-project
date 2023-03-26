@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import '../style/components/GameStyle.scss'
 import heart_icon from '../assets/icons/heart.svg'
 
@@ -24,8 +26,12 @@ type GameObject = {
 
 const Game = (props: GameProps) => {
 
+    const navigate = useNavigate()
+
+    const handleGameClick = (game_id: number) => navigate(game_id.toString())
+
     return (
-        <div className="game-container">
+        <div className="game-container" onClick={() => handleGameClick(props.game.id)}>
             <div className="image-container">
                 <img className="game-image" alt="game thumbnail"
                     src={"https://images.igdb.com/igdb/image/upload/t_cover_big/" + props.game.cover.image_id + ".jpg"} />

@@ -36,7 +36,7 @@ const Navbar = (props: NavbarProps) => {
                 { buttons.map(button => <NavbarButton 
                     name={button.name} 
                     to={button.to} 
-                    active={location.pathname==button.to}
+                    active={location.pathname.includes(button.to)}
                     key={button.to} />) }
             </div>
         </div>
