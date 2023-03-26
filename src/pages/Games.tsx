@@ -17,8 +17,6 @@ const Games = (props: GamesProps) => {
         axios.get("https://fair-teal-alligator-boot.cyclic.app/games")
             .then(res => res.data) )
 
-    if (gamesQuery.isLoading) {}
-
     return (
         <div className="games-container">
             {
