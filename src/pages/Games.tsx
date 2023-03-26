@@ -1,8 +1,10 @@
 import { useQuery } from 'react-query'
-import axios from 'axios';
+import axios from 'axios'
+
+import '../style/pages/GamesStyle.scss'
 
 import { Game } from '../components/Game'
-import { Spinner } from '../components/Spinner';
+import { Spinner } from '../components/Spinner'
 
 import type { GamesQueryObject } from '../components/Game'
 
@@ -18,12 +20,12 @@ const Games = (props: GamesProps) => {
     if (gamesQuery.isLoading) {}
 
     return (
-        <>
+        <div className="games-container">
             {
                 (gamesQuery.isLoading? <Spinner /> : 
                     gamesQuery.data?.map((game: GamesQueryObject) => <Game key={game.id} game={game} /> ))
             }
-        </>
+        </div>
     )
 }
 

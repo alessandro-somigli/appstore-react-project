@@ -1,0 +1,211 @@
+.game-page {
+    .page-header {
+        display: flex;
+        height: 600px;
+        overflow: hidden;
+
+        .game-image-container {
+            .game-image {
+                min-width: 540px;
+                height: 960px;
+
+                right: 0;
+            }
+        }
+
+        .header-info-container {
+            position: relative;
+
+            width: 60%;
+            padding: 200px 0 0 6%;
+
+            background: #ffffff;
+            box-shadow: 50px 0px 50px 50px #ffffff;
+
+            .page-title {
+                font-size: 4rem;
+                font-weight: 600;
+            }
+
+            .company-link {
+                a {
+                    color: #0087ca;
+                    text-decoration: none;
+                }
+            }
+
+            .ratings-container {
+                max-width: 300px;
+
+                .ratings-counter {
+                }
+
+                .progress-bar-container {
+                    display: flex;
+                    align-items: flex-start;
+
+                    .star-icon {
+                        width: 12px;
+                        margin-right: 3px;
+                    }
+
+                    .progress {
+                        display: flex;
+                        justify-content: flex-start;
+
+                        width: 100%;
+                        height: 8px;
+
+                        margin-bottom: 2px;
+                        padding: 0 2px;
+
+                        background: #ffffff;
+
+                        border: 2px solid black;
+                        border-radius: 100px;
+
+                        align-items: center;
+
+                        .progress-value {
+                            width: 0;
+                            height: 5px;
+
+                            box-shadow: 0 10px 40px -10px #fff;
+                            background: #0087ca;
+
+                            border-radius: 100px;
+
+                            transition: width 0.5s ease-out;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page-content {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 1px 10px #333333;
+
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+    padding-top: 30px;
+
+    .page-tags > button {
+        margin: 0 5px;
+        padding: 8px 16px;
+
+        font-size: 1rem;
+        font-family: 'Product Sans', sans-serif;
+    
+        border: 3px solid #0087CA;
+        border-radius: 100px;
+
+        color: #0087CA;
+        background-color: #FFFFFF;
+
+        cursor: pointer;
+    }
+    
+    .content-info {
+        width: 70%;
+
+        margin-bottom: 40px;
+
+        .content-container {
+            width: 100%;
+
+
+            .content-title {
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+
+            .content-text {}
+        }
+    }
+}
+
+.slider {
+    width: 50%;
+    text-align: center;
+    overflow: hidden;
+
+    padding: 30px 0;
+}
+
+.slides {
+    display: flex;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    // animation takes too much cpu
+    // scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* &::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    } */
+}
+
+.slides > img {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: auto;
+
+    margin-right: 50px;
+
+    border-radius: 10px;
+
+    transform-origin: center center;
+    transform: scale(1);
+    
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
+
+.slider > a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border-radius: 50%;
+    
+    color: #FFFFFF;
+    background: #0087CA;
+    text-decoration: none;
+
+    margin: .2rem .2rem 0 .2rem;
+}
+.slider > a:active {
+    top: 1px;
+}
+.slider > a:focus {
+    background: #1693d1;
+}
