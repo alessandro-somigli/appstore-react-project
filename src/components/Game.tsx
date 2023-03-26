@@ -1,3 +1,6 @@
+import '../style/components/GameStyle.scss'
+import heart_icon from '../assets/icons/heart.svg'
+
 type GameProps = {
     children?: React.ReactNode,
     game: GameObject
@@ -21,16 +24,24 @@ type GameObject = {
 
 const Game = (props: GameProps) => {
 
-    console.log("images.igdb.com/igdb/image/upload/t_thumb/" + props.game.cover.image_id + ".jpg");
     return (
         <div className="game-container">
             <div className="image-container">
                 <img className="game-image" alt="game thumbnail"
-                    src={"https://images.igdb.com/igdb/image/upload/t_screenshot_med/" + props.game.cover.image_id + ".jpg"} />
+                    src={"https://images.igdb.com/igdb/image/upload/t_cover_big/" + props.game.cover.image_id + ".jpg"} />
             </div>
 
-            <span>{props.game.name}</span><br />
-            <span>{Math.round(props.game.rating)}/100 - {props.game.genres.map(genre => genre.name + ", ")}</span>
+            <div className="text-container">
+                <span className="game-name">{props.game.name}</span><br />
+                <div className="progress-bar-container">
+                    <img src={heart_icon} alt="star icon" className="star-icon" />
+                    <div className="progress">
+                        <div className="progress-value" style={{width: Math.round(props.game.rating)+"%"}}></div>
+                    </div>
+                </div>
+                {/*props.game.genres.map(genre => genre.name + ", ")*/}
+                <span className="game-data">{props.game.genres[0].name}</span>
+            </div>
         </div>
     )
 }
