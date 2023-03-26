@@ -48,14 +48,15 @@ const GamePage = (props: GamePageProps) => {
             .then(res => res.data) )
 
     const data: GameQueryObject = (gameQuery.data? gameQuery.data[0] : undefined) as GameQueryObject
+    console.log(data)
 
     return (
         <>
             {
                 (gameQuery.isLoading? <Spinner /> :
                 Number(id) != data?.id? <Spinner /> :
-                    <div>
-                        {data.summary}
+                    <div className="game-page">
+                        <h1>{data.name}</h1>
                     </div>
                 )
             }
