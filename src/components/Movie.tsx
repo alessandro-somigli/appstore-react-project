@@ -26,8 +26,21 @@ const Movie = (props: MovieProps) => {
     const handleMovieClick = (movie_id: number) => navigate(movie_id.toString())
 
     return (
-        <div className="movie-container">
-            <p>{JSON.stringify(props.movie)}</p>
+        <div className="movie-container" onClick={() => handleMovieClick(props.movie.id)}>
+            <div className="image-container">
+                <img className="movie-image" alt="movie thumbnail"
+                    src={"https://image.tmdb.org/t/p/w780" + props.movie.poster_path} />
+            </div>
+
+            <div className="text-container">
+                <span className="movie-name">{props.movie.title}</span><br />
+                <div className="progress-bar-container">
+                    <img src={heart_icon} alt="star icon" className="star-icon" />
+                    <div className="progress">
+                        <div className="progress-value" style={{width: props.movie.vote_average*10+"%"}}></div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
