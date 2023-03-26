@@ -5,7 +5,7 @@ import heart_icon from '../assets/icons/heart.svg'
 
 type GameProps = {
     children?: React.ReactNode,
-    game: GameObject
+    game: GamesQueryObject
 }
 
 type GameGenre = {
@@ -16,10 +16,10 @@ type GameCover = {
     id: number,
     image_id: string
 }
-type GameObject = {
+type GamesQueryObject = {
     id: number,
     name: string,
-    rating: number,
+    total_rating: number,
     genres: Array<GameGenre>,
     cover: GameCover
 }
@@ -42,7 +42,7 @@ const Game = (props: GameProps) => {
                 <div className="progress-bar-container">
                     <img src={heart_icon} alt="star icon" className="star-icon" />
                     <div className="progress">
-                        <div className="progress-value" style={{width: Math.round(props.game.rating)+"%"}}></div>
+                        <div className="progress-value" style={{width: Math.round(props.game.total_rating)+"%"}}></div>
                     </div>
                 </div>
                 {/*props.game.genres.map(genre => genre.name + ", ")*/}
@@ -53,4 +53,4 @@ const Game = (props: GameProps) => {
 }
 
 export { Game }
-export type { GameObject, GameGenre }
+export type { GamesQueryObject, GameGenre }
