@@ -6,7 +6,7 @@ import '../style/pages/BooksStyle.scss'
 import { Book } from '../components/Book'
 import { Spinner } from '../components/Spinner'
 
-import type { BooksQueryObject } from '../components/Book'
+import type { BookQueryObject } from '../components/Book'
 
 type BooksProps = {
     children?: React.ReactNode
@@ -21,7 +21,7 @@ const Books = (props: BooksProps) => {
         <div className="books-container">
             {
                 (booksQuery.isLoading? <Spinner /> : 
-                    booksQuery.data?.items.map((book: BooksQueryObject) => <Book key={book.id} book={book} /> ))
+                    booksQuery.data?.items.map((book: BookQueryObject) => <Book key={book.id} book={book} /> ))
             }
         </div>
     )
