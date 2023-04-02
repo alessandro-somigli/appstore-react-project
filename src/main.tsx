@@ -13,6 +13,7 @@ import './style/MainStyle.scss'
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { BookPage } from './pages/BookPage'
 
 const queryClient = new QueryClient()
 
@@ -37,7 +38,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
               <Route path="/store/movies/:id" element={<MoviePage />} />
 
               <Route path="/store/books" element={<Books />} />
-
+              <Route path="/store/books/:id" element={<BookPage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
