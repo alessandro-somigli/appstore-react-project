@@ -21,7 +21,7 @@ const Books = (props: BooksProps) => {
         <div className="books-container">
             {
                 (booksQuery.isLoading? <Spinner /> : 
-                    booksQuery.data?.map((book: BooksQueryObject) => <Book key={book.id} book={book} /> ))
+                    booksQuery.data?.items.map((book: BooksQueryObject) => <Book key={book.id} book={book} /> ))
             }
         </div>
     )

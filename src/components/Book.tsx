@@ -5,14 +5,15 @@ import heart_icon from '../assets/icons/heart.svg'
 
 type BookProps = {
     children?: React.ReactNode,
-    book: BooksQueryObject
+    book: BookQueryObject
 }
 
-type BooksQueryObject = {
+type BookQueryObject = {
     id: string
     volumeInfo: {
         title: string
         authors: string[]
+        publisher: string
         publishedDate: string
         description: string
         pageCount: number
@@ -21,14 +22,16 @@ type BooksQueryObject = {
         imageLinks: {
             thumbnail: string
         }
-        accessInfo: {
-            viewability: string
-            pdf: {
-                webReaderLink: string
-                downloadLink: string
-            }
-            searchInfo: { textSnippet: string }
+        categories: [string]
+    }
+
+    accessInfo: {
+        viewability: string
+        pdf: {
+            webReaderLink: string
+            downloadLink: string
         }
+        searchInfo: { textSnippet: string }
     }
 }
 
@@ -42,7 +45,7 @@ const Book = (props: BookProps) => {
         <div className="book-container" onClick={() => handleBookClick(props.book.id)}>
             <div className="image-container">
                 <img className="book-image" alt="book thumbnail"
-                    src={props.book.volumeInfo.imageLinks.thumbnail} />
+                    src={props.book.volumeInfo?.imageLinks?.thumbnail} />
             </div>
 
             <div className="text-container">
@@ -53,11 +56,13 @@ const Book = (props: BookProps) => {
                         <div className="progress-value" style={{width: Math.round(props.book.volumeInfo.averageRating)*20+"%"}}></div>
                     </div>
                 </div>
-                <span className="book-data">by: {props.book.volumeInfo.authors[0]}</span>
+                <span className="book-data">{
+                    (props.book.volumeInfo.authors? <>by: {props.book.volumeInfo.authors[0]}</> : <></>)
+                }</span>
             </div>
         </div>
     )
 }
 
 export { Book }
-export type { BooksQueryObject }
+export type { BookQueryObject }
