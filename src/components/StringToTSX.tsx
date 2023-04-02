@@ -9,7 +9,7 @@ type AttributeObject = {
   [key: string]: string | StyleObject | null
 }
 
-const emptyTags = ['AREA', 'BASE', 'BR', 'COL', 'COMMAND', 'EMBED', 'HR', 'IMG', 'INPUT', 'KEYGEN', 'LINK', 'META', 'PARAM', 'SOURCE', 'TRACK', 'WBR']
+const emptyTags: Array<String> = ['AREA', 'BASE', 'BR', 'COL', 'COMMAND', 'EMBED', 'HR', 'IMG', 'INPUT', 'KEYGEN', 'LINK', 'META', 'PARAM', 'SOURCE', 'TRACK', 'WBR']
 
 type CreateTSX = (nodeArray: ArrayLike<ChildNode>) => ReactNode[]
 

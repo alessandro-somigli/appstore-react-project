@@ -24,6 +24,10 @@ const BookPage = (props: BookPageProps) => {
 
     const data: BookQueryObject = (bookQuery.data? bookQuery?.data : undefined) as BookQueryObject
 
+    const categories = [] as string[]
+    data?.volumeInfo.categories?.forEach(string => string.split(" / ")
+        .forEach(category => categories.includes(category)? null : categories.push(category)))
+
     return (<>{
         bookQuery.isLoading? <Spinner /> :
         id != data?.id? <Spinner /> : 
@@ -50,7 +54,8 @@ const BookPage = (props: BookPageProps) => {
             </div>
             <div className="page-content">
                 <div className="page-tags">
-                    { (data.volumeInfo.categories?.map((category: string, i) => <button key={i}>{category}</button>)) }
+                    {/*{ (data.volumeInfo.categories?.map((category: string, i) => <button key={i}>{category}</button>)) }*/}
+                    {categories.map((category: string, i) => <button key={i}>{category}</button>)}
                 </div>
 
                 <div className="content-info">
