@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { NavbarButton } from "./NavbarButton"
 import "../style/components/NavbarStyle.scss"
 import sakura_logo from "../assets/images/logo.png"
@@ -25,6 +27,10 @@ const buttons = [
 const Navbar = (props: NavbarProps) => {
     const location = useLocation();
 
+    const navigate = useNavigate()
+
+    const onHandleInsightsClick = () => navigate('/store/insights')
+
     return (
         <div className="navbar">
             <div className="navbar-logo">
@@ -39,6 +45,11 @@ const Navbar = (props: NavbarProps) => {
                     active={location.pathname.includes(button.to)}
                     key={button.to} />) }
             </div>
+
+            <input type="checkbox" id="checkbox"
+                className={"navbar-checkbox " + (location.pathname.includes('insights')? 'active' : '')} 
+                onClick={onHandleInsightsClick} />
+            <label className="checkbox-label" htmlFor="checkbox">Insights</label>
         </div>
     )
 }

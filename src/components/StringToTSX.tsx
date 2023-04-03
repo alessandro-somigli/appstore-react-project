@@ -1,65 +1,56 @@
-import { createElement, ReactNode } from "react"
+import { createElement, ReactNode } from "react";
 
 const getNodes = (string: string): NodeListOf<ChildNode> =>
-  new DOMParser().parseFromString(string, "text/html").body.childNodes
+  new DOMParser().parseFromString(string, "text/html").body.childNodes;
 
-type StyleObject = Record<string, string>
+const emptyTags: Array<String> = ["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR",];
 
-type AttributeObject = {
-  [key: string]: string | StyleObject | null
-}
+const createTSX: (nodeArray: ArrayLike<ChildNode>) => ReactNode[] = (nodeArray: ArrayLike<ChildNode>) =>
+  	Array.from(nodeArray).map((node, index) => {
+    	if (node.nodeType !== Node.ELEMENT_NODE) { return node.nodeValue;}
 
-const emptyTags: Array<String> = ['AREA', 'BASE', 'BR', 'COL', 'COMMAND', 'EMBED', 'HR', 'IMG', 'INPUT', 'KEYGEN', 'LINK', 'META', 'PARAM', 'SOURCE', 'TRACK', 'WBR']
+    	const attributeObj: {[key: string]: string | Record<string, string> | null} = {};
 
-type CreateTSX = (nodeArray: ArrayLike<ChildNode>) => ReactNode[]
+    	const { attributes, localName, childNodes } = node as HTMLElement;
 
-const createTSX: CreateTSX = (nodeArray) =>
-  Array.from(nodeArray).map((node, index) => {
-    if (node.nodeType !== Node.ELEMENT_NODE) {
-      return node.nodeValue
-    }
+		if (attributes) {
+			Array.from(attributes).forEach((attribute) => {
+				if (attribute.name === "style") {
+					const styleAttributes = attribute.nodeValue
+						? attribute.nodeValue.split(";")
+						: null;
+				
+					const styleObj: Record<string, string> = {};
 
-    const element = node as HTMLElement
-    const attributeObj: AttributeObject = {}
-    const { attributes, localName, childNodes } = element
+					styleAttributes?.forEach((attribute) => {
+						const [key, value] = attribute.split(":");
+						styleObj[key] = value.trim();
+					});
 
-    if (attributes) {
-      Array.from(attributes).forEach((attribute) => {
-        if (attribute.name === "style") {
-          const styleAttributes = attribute.nodeValue
-            ? attribute.nodeValue.split(";")
-            : null
-          const styleObj: StyleObject = {}
+					attributeObj[attribute.name] = styleObj;
+				} else {
+					attributeObj[attribute.name] = attribute.nodeValue;
+				}
+			});
+		}
 
-          styleAttributes?.forEach((attribute) => {
-            const [key, value] = attribute.split(":")
-            styleObj[key] = value.trim()
-          })
+	return localName
+		? createElement(
+			localName,
+			{ ...attributeObj, key: index },
+			emptyTags.includes(node.nodeName)
+				? undefined
+				: childNodes && Array.isArray(Array.from(childNodes))
+				? createTSX(Array.from(childNodes))
+				: []
+			)
+	: null;
+});
 
-          attributeObj[attribute.name] = styleObj
-        } else {
-          attributeObj[attribute.name] = attribute.nodeValue
-        }
-      })
-    }
-
-    return localName
-      ? createElement(
-          localName,
-          { ...attributeObj, key: index },
-          (emptyTags.includes(node.nodeName)? undefined : 
-            childNodes && Array.isArray(Array.from(childNodes))
-            ? createTSX(Array.from(childNodes))
-            : []
-          )
-        )
-      : null
-})
-
-type StringToTSXProps = { domString: string }
+type StringToTSXProps = { domString: string };
 
 const StringToTSX = ({ domString }: StringToTSXProps): JSX.Element => (
   <>{createTSX(getNodes(domString))}</>
-)
+);
 
-export { StringToTSX }
+export { StringToTSX };

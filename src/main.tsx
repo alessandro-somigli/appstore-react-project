@@ -8,6 +8,8 @@ import { Movies } from './pages/Movies'
 import { MoviePage } from './pages/MoviePage'
 import { Books } from './pages/Books'
 
+import { InsightsPage } from './pages/InsightsPage'
+
 import './style/MainStyle.scss'
 
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
@@ -39,6 +41,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
               <Route path="/store/books" element={<Books />} />
               <Route path="/store/books/:id" element={<BookPage />} />
+
+              <Route path="/store/insights" element={<InsightsPage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
