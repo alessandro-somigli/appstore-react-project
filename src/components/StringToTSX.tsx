@@ -1,35 +1,39 @@
-import { createElement, ReactNode } from "react";
+import { createElement, ReactNode } from "react"
 
 const getNodes = (string: string): NodeListOf<ChildNode> =>
-  new DOMParser().parseFromString(string, "text/html").body.childNodes;
+  new DOMParser().parseFromString(string, "text/html").body.childNodes
 
-const emptyTags: Array<String> = ["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR",];
+const emptyTags: Array<String> = ["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR",]
 
 const createTSX: (nodeArray: ArrayLike<ChildNode>) => ReactNode[] = (nodeArray: ArrayLike<ChildNode>) =>
   	Array.from(nodeArray).map((node, index) => {
-    	if (node.nodeType !== Node.ELEMENT_NODE) { return node.nodeValue;}
+    	if (node.nodeType !== Node.ELEMENT_NODE) { return node.nodeValue }
 
-    	const attributeObj: {[key: string]: string | Record<string, string> | null} = {};
+    	const attributeObj: {[key: string]: string | Record<string, string> | null} = {}
 
-    	const { attributes, localName, childNodes } = node as HTMLElement;
+    	const { attributes, localName, childNodes } = node as HTMLElement 
 
 		if (attributes) {
 			Array.from(attributes).forEach((attribute) => {
+
+				// check and add to element
 				if (attribute.name === "style") {
 					const styleAttributes = attribute.nodeValue
 						? attribute.nodeValue.split(";")
-						: null;
+						: null
 				
-					const styleObj: Record<string, string> = {};
+					const styleObj: Record<string, string> = {}
 
 					styleAttributes?.forEach((attribute) => {
-						const [key, value] = attribute.split(":");
-						styleObj[key] = value.trim();
+						const [key, value] = attribute.split(":")
+						styleObj[key] = value.trim()
 					});
 
-					attributeObj[attribute.name] = styleObj;
+					attributeObj[attribute.name] = styleObj
 				} else {
-					attributeObj[attribute.name] = attribute.nodeValue;
+					// make corrections for jsx
+					if (attribute.name === "classname") { attributeObj["className"] = attribute.nodeValue }
+					else { attributeObj[attribute.name] = attribute.nodeValue }
 				}
 			});
 		}
@@ -44,13 +48,13 @@ const createTSX: (nodeArray: ArrayLike<ChildNode>) => ReactNode[] = (nodeArray: 
 				? createTSX(Array.from(childNodes))
 				: []
 			)
-	: null;
-});
+	: null
+})
 
-type StringToTSXProps = { domString: string };
+type StringToTSXProps = { domString: string }
 
 const StringToTSX = ({ domString }: StringToTSXProps): JSX.Element => (
   <>{createTSX(getNodes(domString))}</>
-);
+)
 
 export { StringToTSX };
