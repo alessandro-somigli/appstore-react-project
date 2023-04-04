@@ -1,7 +1,7 @@
 section {
     width: 100%;
     
-    margin-top: 40px;
+    margin-top: 50px;
 
     background-color: #FFFFFF;
     display: flex;
@@ -16,6 +16,9 @@ section {
 }
 
 .container{
+    display: flex;
+    position: relative;
+
     width: 100%;
     max-width: 80rem;
 
@@ -23,7 +26,45 @@ section {
     padding: 0 1.5rem;
 }
 
+.flags-container {
+    position: absolute;
+    display: flex;
+
+    & .flag {
+        position: relative;
+        top: -24px;
+        left: 10px;
+
+        width: 64px;
+        height: 64px;
+
+        margin-right: 8px;
+
+        transition: top .3s ease;
+
+        cursor: pointer;
+
+        &.active {
+            top: -40px;
+        }
+
+        &:hover {
+            top: -40px;
+        }
+
+        & img {
+            width: 64px;
+            height: 64px;
+        }
+    }
+}
+
 .accordion {
+    position: relative;
+    z-index: 1;
+
+    background-color: #FFFFFF;
+
     padding: 1.5rem;
     padding-top: .5rem;
 
@@ -48,13 +89,13 @@ section {
 
     &:target .answer{
         /*  navbar-height: 80px. 
-            section margin-top: 40px. 
+            section margin-top: 50px. 
             bottom space: 40px.
             accordion padding: 32px.
             accordion-link: 56px * 4.
             hrs: 1.6*5
             */
-        max-height: calc(100vh - 80px - 40px - 40px - 32px - (56*4) * 1px - (1.6 * 5) * 1px);
+        max-height: calc(100vh - 80px - 50px - 40px - 32px - (56*4) * 1px - (1.6 * 5) * 1px);
     }
 
     &:target .accordion-link .ion-md-arrow-forward{

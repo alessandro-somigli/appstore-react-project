@@ -1,22 +1,53 @@
+import React, { useState } from "react"
 import { StringToTSX } from "../components/StringToTSX"
 
 import "../style/pages/InsightsPageStyle.scss"
+
+import italy_image from "../assets/images/italy.png"
+import uk_image from "../assets/images/uk.png"
 
 import arrow_forward from "../assets/icons/arrow-forward.svg"
 import arrow_down from "../assets/icons/arrow-down.svg"
 
 import { introduction_en, games_en, movies_en, books_en } from "../assets/langs/eng"
+import { introduction_it, games_it, movies_it, books_it } from "../assets/langs/ita"
 
-type InsightsPageProps = {
-
-}
+type InsightsPageProps = {}
 
 const InsightsPage = (props: InsightsPageProps) => {
+    const [language, setLanguage] = useState("eng")
+    const [introduction, setIntroduction] = useState(introduction_en)
+    const [games, setGames] = useState(games_en)
+    const [movies, setMovies] = useState(movies_en)
+    const [books, setBooks] = useState(books_en);
+
+    const onHandleFlagClick = (lang: string) => {
+        setLanguage(lang)
+        if (lang === "eng") {
+            setIntroduction(introduction_en)
+            setGames(games_en)
+            setMovies(movies_en)
+            setBooks(books_en)
+        } else if (lang === "ita") {
+            setIntroduction(introduction_it)
+            setGames(games_it)
+            setMovies(movies_it)
+            setBooks(books_it)
+        }
+    }
 
     return (
         <div className="insights-page">
             <section>
                 <div className="container">
+                    <div className="flags-container">
+                        <div className={"flag " + (language === "eng"? "active":"")} onClick={() => onHandleFlagClick("eng")}>
+                            <img src={uk_image} alt="uk image" />
+                        </div>
+                        <div className={"flag " + (language === "ita"? "active":"")} onClick={() => onHandleFlagClick("ita")}>
+                            <img src={italy_image} alt="italy image" />
+                        </div>
+                    </div>
                     <div className="accordion">
                         <div className="accordion-item" id="question1">
                             <a className="accordion-link" href="#question1">
@@ -35,7 +66,7 @@ const InsightsPage = (props: InsightsPageProps) => {
                             </a>
                             <div className="answer">
                                 <hr className="sticky-hr" /><br />
-                                <StringToTSX domString={introduction_en} />
+                                <StringToTSX domString={introduction} />
                                 <br /><br />
                             </div>
                             <hr />
@@ -45,11 +76,11 @@ const InsightsPage = (props: InsightsPageProps) => {
                                 <div className="flex">
                                 <h3>GAMES</h3>
                                 <ul>
-                                    <li>#Figma</li>
-                                    <li>#Sketch</li>
-                                    <li>#Adobe</li>
-                                    <li>#Invision</li>
-                                    <li>#Protopie</li>
+                                    <li>#Gaming</li>
+                                    <li>#Mobile</li>
+                                    <li>#Google</li>
+                                    <li>#Community</li>
+                                    <li>#Buisness</li>
                                 </ul>
                                 </div>
                                 <img src={arrow_forward} className="icon ion-md-arrow-forward" />
@@ -57,7 +88,7 @@ const InsightsPage = (props: InsightsPageProps) => {
                             </a>
                             <div className="answer">
                                 <hr className="sticky-hr" /><br />
-                                <StringToTSX domString={games_en} />
+                                <StringToTSX domString={games} />
                                 <br /><br />
                             </div>
                             <hr />
@@ -67,9 +98,9 @@ const InsightsPage = (props: InsightsPageProps) => {
                                 <div className="flex">
                                 <h3>MOVIES</h3>
                                 <ul>
-                                    <li>#Figma</li>
-                                    <li>#Sketch</li>
-                                    <li>#Adobe</li>
+                                    <li>#Industry</li>
+                                    <li>#Entertainment</li>
+                                    <li>#Netflix</li>
                                     <li>#Invision</li>
                                     <li>#Protopie</li>
                                 </ul>
@@ -79,7 +110,7 @@ const InsightsPage = (props: InsightsPageProps) => {
                             </a>
                             <div className="answer">
                                 <hr className="sticky-hr" /><br />
-                                <StringToTSX domString={movies_en} />
+                                <StringToTSX domString={movies} />
                                 <br /><br />
                             </div>
                             <hr />
@@ -101,7 +132,7 @@ const InsightsPage = (props: InsightsPageProps) => {
                             </a>
                             <div className="answer">
                                 <hr className="sticky-hr" /><br />
-                                <StringToTSX domString={books_en} />
+                                <StringToTSX domString={books} />
                                 <br /><br />
                             </div>
                             <hr />
