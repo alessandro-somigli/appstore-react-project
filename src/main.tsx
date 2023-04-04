@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import { Navbar } from './components/Navbar'
 import { Games } from './pages/Games'
 import { GamePage } from './pages/GamePage'
-import { Apps } from './pages/Apps'
 import { Movies } from './pages/Movies'
 import { MoviePage } from './pages/MoviePage'
 import { Books } from './pages/Books'
@@ -33,8 +32,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
               
               <Route path="/store/games" element={<Games />} />
               <Route path="/store/games/:id" element={<GamePage />} />
-
-              <Route path="/store/apps" element={<Apps />} />
 
               <Route path="/store/movies" element={<Movies />} />
               <Route path="/store/movies/:id" element={<MoviePage />} />

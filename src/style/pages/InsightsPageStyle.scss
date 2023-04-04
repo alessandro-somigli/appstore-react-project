@@ -16,10 +16,19 @@ section {
 }
 
 .container{
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+    width: 100%;
+    max-width: 80rem;
+
+    margin: 0 auto 40px auto;
+    padding: 0 1.5rem;
+}
+
+.accordion {
+    padding: 1.5rem;
+    padding-top: .5rem;
+
+    border: 1px solid #000000;
+    box-shadow: 5px 5px #000000;
 }
 
 .accordion-item{
@@ -38,7 +47,14 @@ section {
     }
 
     &:target .answer{
-        max-height: 20rem;
+        /*  navbar-height: 80px. 
+            section margin-top: 40px. 
+            bottom space: 40px.
+            accordion padding: 32px.
+            accordion-link: 56px * 4.
+            hrs: 1.6*5
+            */
+        max-height: calc(100vh - 80px - 40px - 40px - 32px - (56*4) * 1px - (1.6 * 5) * 1px);
     }
 
     &:target .accordion-link .ion-md-arrow-forward{

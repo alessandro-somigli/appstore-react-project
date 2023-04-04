@@ -13,9 +13,6 @@ const buttons = [
         name: 'Games',
         to: '/store/games'
     }, {
-        name: 'Apps',
-        to: '/store/apps'
-    }, {
         name: 'Movies',
         to: '/store/movies'
     }, {
