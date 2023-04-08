@@ -90,6 +90,14 @@
     }
 }
 
+.insights-button {
+    display: flex;
+    position: relative;
+
+    margin-left: auto;
+    margin-right: 4rem;
+}
+
 .navbar-checkbox {
     height: 0;
     width: 0;
@@ -104,19 +112,18 @@ $color-dark: #000;
 $color-light: #fff;
 
 .checkbox-label {
-    margin-left: auto;
-    padding: 1.5rem 3rem;
+    padding: 12px 24px;
     
-    transform: scale(.5);
+    transform: scale(1);
 
     outline: none;
     user-select: none;
 
-    font-size: 2.5rem;
+    font-size: 20px;
     cursor: pointer;
 
-    border: .3rem solid $color-dark;
-    border-radius: .6rem;
+    border: .15rem solid $color-dark;
+    border-radius: .3rem;
 
     color: $color-dark;
     background: $color-light;

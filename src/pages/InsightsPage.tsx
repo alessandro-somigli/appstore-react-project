@@ -56,8 +56,6 @@ const InsightsPage = (props: InsightsPageProps) => {
                                     <ul>
                                         <li>#Google</li>
                                         <li>#Apple</li>
-                                        <li>#Mobile</li>
-                                        <li>#Media</li>
                                         <li>#Industry</li>
                                     </ul>
                                 </div>
@@ -78,9 +76,7 @@ const InsightsPage = (props: InsightsPageProps) => {
                                 <ul>
                                     <li>#Gaming</li>
                                     <li>#Mobile</li>
-                                    <li>#Google</li>
-                                    <li>#Community</li>
-                                    <li>#Buisness</li>
+                                    <li>#Invision</li>
                                 </ul>
                                 </div>
                                 <img src={arrow_forward} className="icon ion-md-arrow-forward" />
@@ -98,11 +94,9 @@ const InsightsPage = (props: InsightsPageProps) => {
                                 <div className="flex">
                                 <h3>MOVIES</h3>
                                 <ul>
-                                    <li>#Industry</li>
+                                    <li>#Cinema</li>
                                     <li>#Entertainment</li>
-                                    <li>#Netflix</li>
-                                    <li>#Invision</li>
-                                    <li>#Protopie</li>
+                                    <li>#Buisness</li>
                                 </ul>
                                 </div>
                                 <img src={arrow_forward} className="icon ion-md-arrow-forward" />
@@ -120,11 +114,9 @@ const InsightsPage = (props: InsightsPageProps) => {
                                 <div>
                                 <h3>BOOKS</h3>
                                 <ul>
-                                    <li>#Figma</li>
-                                    <li>#Sketch</li>
-                                    <li>#Adobe</li>
-                                    <li>#Invision</li>
-                                    <li>#Protopie</li>
+                                    <li>#Reading</li>
+                                    <li>#Community</li>
+                                    <li>#Tech</li>
                                 </ul>
                                 </div>
                                 <img src={arrow_forward} className="icon ion-md-arrow-forward" />

@@ -43,10 +43,12 @@ const Navbar = (props: NavbarProps) => {
                     key={button.to} />) }
             </div>
 
-            <input type="checkbox" id="checkbox"
-                className={"navbar-checkbox " + (location.pathname.includes('insights')? 'active' : '')} 
-                onClick={onHandleInsightsClick} />
-            <label className="checkbox-label" htmlFor="checkbox">Insights</label>
+            <div className="insights-button">
+                <input type="checkbox" id="checkbox"
+                    className={"navbar-checkbox " + (location.pathname.includes('insights')? 'active' : '')} 
+                    onClick={onHandleInsightsClick} />
+                <label className="checkbox-label" htmlFor="checkbox">Insights</label>
+            </div>
         </div>
     )
 }
