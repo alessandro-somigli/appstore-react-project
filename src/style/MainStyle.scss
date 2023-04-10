@@ -17,9 +17,6 @@ html, html * {
 }
 
 #root {
-    // make navbar sticky
-    position: absolute;
-
     // navbar is flex, so this ensures it doesn't collapse
     width: 100%;
 

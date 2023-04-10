@@ -1,0 +1,196 @@
+.accordion-section {
+    width: 100vw;
+    
+    margin-top: 10px;
+    padding-top: 40px;
+
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & *, *::before, *::after {
+        margin:0;
+        padding: 0;
+        box-sizing: inherit;
+    }
+}
+
+.container{
+    display: flex;
+    position: relative;
+
+    // 100vw so that the animation works
+    width: 100%;
+    max-width: 80rem;
+
+    margin: 0 auto 40px auto;
+    padding: 0 3rem;
+}
+
+.flags-container {
+    position: absolute;
+    display: flex;
+
+    & .flag {
+        position: relative;
+        top: -24px;
+        left: 10px;
+
+        width: 64px;
+        height: 64px;
+
+        margin-right: 8px;
+
+        transition: top .3s ease;
+
+        cursor: pointer;
+
+        &.active {
+            top: -40px;
+        }
+
+        &:hover {
+            top: -40px;
+        }
+
+        & img {
+            width: 64px;
+            height: 64px;
+        }
+    }
+}
+
+.accordion {
+    position: relative;
+    z-index: 1;
+
+    background-color: #FFFFFF;
+
+    padding: 1.5rem;
+    padding-top: .5rem;
+
+    border: 1px solid #000000;
+    box-shadow: 5px 5px #000000;
+}
+
+.accordion-item{
+  background-color: #FFFFFF;
+  border-radius: .4rem;
+
+  position: relative;
+
+    & hr {
+        border: 1px solid #000000;
+
+        &.sticky-hr {
+            position: sticky;
+            top: 0;
+        }
+    }
+
+    &:target .answer{
+        /*  navbar-height: 80px. 
+            section margin-top: 50px. 
+            bottom space: 40px.
+            accordion padding: 32px.
+            accordion-link: 56px * 4.
+            hrs: 1.6*5
+            */
+        max-height: calc(100vh - 80px - 50px - 40px - 32px - (56*4) * 1px - (1.6 * 5) * 1px);
+    }
+
+    &:target .accordion-link .ion-md-arrow-forward{
+        display: none
+    }
+
+    &:target .accordion-link .ion-md-arrow-down{
+        display: block;
+    }
+}
+
+.accordion-link{
+    font-size: 1.6rem;
+    color: #000000;
+    text-decoration: none;
+    background-color: #FFFFFF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+    & h3 {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    & i {
+        color: #e7d5ff;
+        padding: .5rem;
+    }
+
+    & ul {
+        display:flex;
+        align-items: flex-end;
+        list-style-type: none;
+        margin-left: 25px;
+    }
+
+    & li {
+        font-weight: 600;
+        font-size: 10px;
+
+        color: rgba(0, 0, 0, 0.4);
+        padding: 0 0 1px 5px;
+    }
+
+    & div{ display: flex; }
+      
+    & .ion-md-arrow-down{ display: none; }
+}
+
+.answer{
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #FFFFFF;
+    transition: max-height 650ms;
+
+    & p {
+        color: #000000;
+        font-size: 15px;
+        padding: 2rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-top:     2px solid black;
+        border-right:   1px solid black;
+        border-bottom:  0px solid black;
+        border-left:    1px solid black;
+	    background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #000000;	
+    }
+
+    & .text-container {
+        padding: 0 20px 0 0;
+    }
+
+    & .text-link {
+        color: #0087CA;
+        text-decoration: none;
+    }
+}
+
+.icon {
+    width: 20px;
+}
