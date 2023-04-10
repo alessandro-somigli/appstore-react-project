@@ -48,7 +48,16 @@
 #left-side {
     z-index: 2;
 
+    height: calc(100vh - 80px);
+    width: 100vw;
+
     transition: width .75s ease;
+
+    box-shadow: 2px 0px 0px 0px #000000;
+
+    background: #FFFFFF;
+    
+    overflow: hidden;
 }
 
 #right-side {
