@@ -22,18 +22,18 @@ import apple_annual_gross_app_revenue from "../assets/images/statista/apple-annu
 import apple_average_app_price from "../assets/images/statista/apple-average-app-price-2022.png"
 
 const cards = [
-    { img: overview_annual_number_of_global_mobile_app_downloads, text: '', class: 'out' },
-    { img: apple_distribution_of_free_and_paid_ios_apps, text: '', class: 'current' },
-    { img: google_distribution_of_free_and_paid_android_apps, text: '', class: 'next' },
-    { img: amazon_distribution_of_free_and_paid_amazon_apps, text: '', class: '' },
-    { img: apple_number_of_active_apps_from_the_app_store, text: '', class: '' },
-    { img: google_number_of_available_apps, text: '', class: '' },
-    { img: amazon_number_of_available_apps, text: '', class: '' },
-    { img: china_number_of_smartphone_apps_on_app_stores_in_china, text: '', class: '' },
-    { img: apple_quarterly_growth_of_available_apps, text: '', class: '' },
-    { img: google_quarterly_growth_of_available_apps, text: '', class: '' },
-    { img: apple_annual_gross_app_revenue, text: '', class: '' },
-    { img: apple_average_app_price, text: '', class: '' }
+    { img: overview_annual_number_of_global_mobile_app_downloads, class: 'out' },
+    { img: apple_distribution_of_free_and_paid_ios_apps, class: 'current' },
+    { img: google_distribution_of_free_and_paid_android_apps, class: 'next' },
+    { img: amazon_distribution_of_free_and_paid_amazon_apps, class: '' },
+    { img: apple_number_of_active_apps_from_the_app_store, class: '' },
+    { img: google_number_of_available_apps, class: '' },
+    { img: amazon_number_of_available_apps, class: '' },
+    { img: china_number_of_smartphone_apps_on_app_stores_in_china, class: '' },
+    { img: apple_quarterly_growth_of_available_apps, class: '' },
+    { img: google_quarterly_growth_of_available_apps, class: '' },
+    { img: apple_annual_gross_app_revenue, class: '' },
+    { img: apple_average_app_price, class: '' }
 ];
 
 
@@ -65,7 +65,6 @@ const Carousel = (props: CarouselProps) => {
                     onClick={() => handleCardClick(index)}
                 >
                     <img className="card-image" src={card.img} alt="" />
-                    <p>{card.text}</p>
                 </li>
                 ))}
             </ul>
