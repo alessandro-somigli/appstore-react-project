@@ -22,9 +22,9 @@ import apple_annual_gross_app_revenue from "../assets/images/statista/apple-annu
 import apple_average_app_price from "../assets/images/statista/apple-average-app-price-2022.png"
 
 const cards = [
-    { img: overview_annual_number_of_global_mobile_app_downloads, class: 'out' },
-    { img: apple_distribution_of_free_and_paid_ios_apps, class: 'current' },
-    { img: google_distribution_of_free_and_paid_android_apps, class: 'next' },
+    { img: overview_annual_number_of_global_mobile_app_downloads, class: 'current' },
+    { img: apple_distribution_of_free_and_paid_ios_apps, class: 'next' },
+    { img: google_distribution_of_free_and_paid_android_apps, class: '' },
     { img: amazon_distribution_of_free_and_paid_amazon_apps, class: '' },
     { img: apple_number_of_active_apps_from_the_app_store, class: '' },
     { img: google_number_of_available_apps, class: '' },
@@ -33,16 +33,14 @@ const cards = [
     { img: apple_quarterly_growth_of_available_apps, class: '' },
     { img: google_quarterly_growth_of_available_apps, class: '' },
     { img: apple_annual_gross_app_revenue, class: '' },
-    { img: apple_average_app_price, class: '' }
+    { img: apple_average_app_price, class: 'out' }
 ];
 
 
 const Carousel = (props: CarouselProps) => {
-    const [currentCard, setCurrentCard] = useState<number>(1);
+    const [currentCard, setCurrentCard] = useState<number>(0);
 
     const handleCardClick = (index: number) => {
-
-
         cards.forEach(card => card.class = '')
 
         const out = currentCard
@@ -58,16 +56,26 @@ const Carousel = (props: CarouselProps) => {
   
     return (
         <section className="carousel-section">
-            <ul className="cards">
-                {cards.map((card, index) => (
-                <li key={index}
-                    className={`card card--${card.class}`}
-                    onClick={() => handleCardClick(index)}
-                >
-                    <img className="card-image" src={card.img} alt="" />
-                </li>
-                ))}
-            </ul>
+            <div className="carousel-container">
+                <ul className="cards">
+                    {cards.map((card, index) => (
+                    <li key={index}
+                        className={`card card--${card.class}`}
+                        onClick={() => handleCardClick(index)}
+                    >
+                        <img className="card-image" src={card.img} alt="" />
+                    </li>
+                    ))}
+                </ul>
+                <div className="dots">
+                    { cards.map((card, index) => 
+                        <div className={"dot " + (currentCard==index?"active":"")} key={index}
+                            onClick={() => handleCardClick(index)}>
+                            {index+1}
+                        </div>
+                    ) }
+                </div>
+            </div>
         </section>
     );
   };
